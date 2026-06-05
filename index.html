@@ -174,6 +174,70 @@
   .divider-line { flex: 1; height: 1px; background: #2a2a2a; }
   .divider-ball { font-size: 20px; }
 
+  /* SOCIAL STRIP */
+  .social-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 780px;
+    margin: 0 auto 8px;
+    padding: 0 24px;
+    flex-wrap: wrap;
+  }
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 24px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    text-decoration: none;
+    flex: 1;
+    min-width: 240px;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  }
+  .social-card:hover { border-color: #f97316; background: #161616; transform: translateY(-2px); }
+  .social-icon { font-size: 28px; }
+  .social-info { flex: 1; }
+  .social-handle { font-size: 15px; font-weight: 700; color: #f97316; }
+  .social-platform { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .social-arrow { font-size: 18px; color: #4b5563; transition: color 0.2s, transform 0.2s; }
+  .social-card:hover .social-arrow { color: #f97316; transform: translateX(4px); }
+  .social-divider { width: 16px; flex-shrink: 0; }
+
+  /* HIGHLIGHT VIDEO */
+  .highlight-video-section {
+    max-width: 720px;
+    margin: 20px auto 8px;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .highlight-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f97316;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .highlight-video {
+    width: 100%;
+    border-radius: 14px;
+    border: 2px solid rgba(249,115,22,0.4);
+    background: #000;
+    display: block;
+    max-height: 500px;
+    object-fit: contain;
+  }
+  .highlight-caption {
+    font-size: 12px;
+    color: #4b5563;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
   /* TIMELINE */
   .timeline {
     max-width: 920px;
@@ -696,6 +760,36 @@
 </section>
 
 <div class="divider" style="margin-top:32px;"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
+
+<!-- SOCIAL LINKS STRIP -->
+<div class="social-strip">
+  <a class="social-card" href="https://www.instagram.com/drewgoldoff_basketball/" target="_blank" rel="noopener">
+    <div class="social-icon">📸</div>
+    <div class="social-info">
+      <div class="social-handle">@drewgoldoff_basketball</div>
+      <div class="social-platform">Instagram · Basketball Highlights</div>
+    </div>
+    <div class="social-arrow">→</div>
+  </a>
+  <div class="social-divider"></div>
+  <a class="social-card" href="https://www.youtube.com/@DrewBasketballGoldoff/videos" target="_blank" rel="noopener">
+    <div class="social-icon">▶️</div>
+    <div class="social-info">
+      <div class="social-handle">@DrewBasketballGoldoff</div>
+      <div class="social-platform">YouTube · 16 Videos · Training &amp; Games</div>
+    </div>
+    <div class="social-arrow">→</div>
+  </a>
+</div>
+
+<!-- HIGHLIGHT VIDEO -->
+<div class="highlight-video-section">
+  <div class="highlight-label">🎬 DREW'S HIGHLIGHT REEL</div>
+  <video class="highlight-video" controls playsinline preload="metadata" poster="">
+    <source src="drew_highlight.mp4" type="video/mp4">
+  </video>
+  <div class="highlight-caption">Dribble · Shoot · Score — Drew Goldoff</div>
+</div>
 
 <!-- TIMELINE -->
 <div class="timeline">
