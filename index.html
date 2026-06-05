@@ -1194,14 +1194,45 @@ function removeVideo(btn) {
     </div>`;
 }
 
+// ── PRE-LOADED DREW VIDEOS (mapped to each timeline card in order) ─
+const DREW_VIDEOS = [
+  { id: '5eBY6TOAanU', label: 'Sharks Elite AAU Summer 2022' },           // Card 0A: Born 2006
+  { id: '9buh4G85iC8', label: 'Training w/ Nick @ Infinrity Sports NYC' }, // Card 0B: NYC Kid
+  { id: 'L4z8gsPNJSQ', label: 'Atlantic Sharks AAU – Westchester 2022' },  // Card 1: Rec League
+  { id: '7Rubk3_Ipuc', label: 'Riverside Hawks Select' },                  // Card 2: Finding His Squad
+  { id: 'id15QtLcwK0', label: 'Riverside Hawks Travel Games 2023' },       // Card 3: Running the Point
+  { id: 'Znt5Tyk8Nco', label: '2023 Las Vegas NBA Summer League' },        // Card 4: Hardware Time
+  { id: 'Np5AE76kmiA', label: 'Brewster Bears vrs Edgemont Panthers' },    // Card 5: Raider in the Making
+  { id: 'aZK0Lc-X8zA', label: 'San Diego Holiday Classic Dec 2023' },      // Card 6: Scarsdale Varsity #21
+  { id: 'G0J8D7o1TZQ', label: 'Free Throw – Scarsdale vrs Xavier' },       // Card 7: The Jump Shot
+  { id: 'PuOG-j9Q3Hc', label: '2024 Scarsdale Varsity Game' },             // Card 8: Senior Night
+  { id: 'X_WVuICRSlM', label: 'Pro Hoops Summer 2024' },                   // Card 9: University of Hartford
+  { id: 'BT1OkjESgfY', label: 'Sundays at Pro Hoops – East Harlem' },      // Card 10: Today
+];
+
+function preloadVideos() {
+  const slots = document.querySelectorAll('.video-slot');
+  slots.forEach((slot, i) => {
+    if (i < DREW_VIDEOS.length && !slot.querySelector('iframe')) {
+      const v = DREW_VIDEOS[i];
+      slot.innerHTML = `
+        <div style="padding:6px 10px 2px;font-size:10px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;">🎬 ${v.label}</div>
+        <iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <button class="video-remove-btn" onclick="removeVideo(this)">✕</button>`;
+      slot.style.border = '2px solid rgba(249,115,22,0.6)';
+    }
+  });
+}
+
 // ── INIT ─────────────────────────────────────────────────────────
 buildPlaylist();
 updateUI();
 document.addEventListener('DOMContentLoaded', () => {
   injectVideoSlots();
   wirePhotoSlots();
+  setTimeout(preloadVideos, 200);
 });
-setTimeout(() => { injectVideoSlots(); wirePhotoSlots(); }, 600);
+setTimeout(() => { injectVideoSlots(); wirePhotoSlots(); setTimeout(preloadVideos, 300); }, 600);
 
 // ── PHOTO UPLOAD LOGIC ──────────────────────────────────────────
 function wirePhotoSlots() {
