@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -24,7 +24,6 @@
     position: relative;
     overflow: hidden;
   }
-  /* HERO SLIDESHOW */
   .hero-slides {
     position: absolute;
     inset: 0;
@@ -36,9 +35,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
     opacity: 0;
     animation: heroSlide 60s infinite;
-    transform: scale(1.08);
+    transform: scale(1.05);
     will-change: opacity, transform;
   }
   .hero-slides img:nth-child(1)  { animation-delay: 0s; }
@@ -52,20 +52,19 @@
   .hero-slides img:nth-child(9)  { animation-delay: 48s; }
   .hero-slides img:nth-child(10) { animation-delay: 54s; }
   @keyframes heroSlide {
-    0%    { opacity: 0; transform: scale(1.08); }
-    3%    { opacity: 0.5; transform: scale(1.05); }
-    8%    { opacity: 0.5; transform: scale(1.02); }
+    0%    { opacity: 0; transform: scale(1.05); }
+    3%    { opacity: 0.55; transform: scale(1.03); }
+    8%    { opacity: 0.55; transform: scale(1.01); }
     11%   { opacity: 0; transform: scale(1.0); }
     100%  { opacity: 0; transform: scale(1.0); }
   }
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(26,26,46,0.6) 50%, rgba(10,10,10,0.7) 100%);
+    background: linear-gradient(135deg, rgba(10,10,10,0.72) 0%, rgba(26,26,46,0.62) 50%, rgba(10,10,10,0.72) 100%);
     z-index: 1;
     pointer-events: none;
   }
-  /* Drew Crew logo watermark — white glow on dark bg via invert + screen blend */
   .hero-logo-watermark {
     position: absolute;
     top: 50%;
@@ -124,18 +123,10 @@
     will-change: filter;
   }
   @keyframes drewGlow {
-    0%, 100% {
-      filter: brightness(1) drop-shadow(0 0 0px rgba(249,115,22,0));
-    }
-    25% {
-      filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2));
-    }
-    50% {
-      filter: brightness(1.4) drop-shadow(0 0 20px rgba(249,115,22,1)) drop-shadow(0 0 45px rgba(249,115,22,0.6)) drop-shadow(0 0 80px rgba(234,88,12,0.35));
-    }
-    75% {
-      filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2));
-    }
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0px rgba(249,115,22,0)); }
+    25%       { filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2)); }
+    50%       { filter: brightness(1.4) drop-shadow(0 0 20px rgba(249,115,22,1)) drop-shadow(0 0 45px rgba(249,115,22,0.6)) drop-shadow(0 0 80px rgba(234,88,12,0.35)); }
+    75%       { filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2)); }
   }
   .hero-sub {
     font-family: 'Bebas Neue', sans-serif;
@@ -346,7 +337,6 @@
   .card.left { flex-direction: row; }
   .card.right { flex-direction: row-reverse; }
 
-  /* Center dot on timeline */
   .card::before {
     content: '';
     position: absolute;
@@ -369,6 +359,7 @@
     border-radius: 12px;
     display: block;
     object-fit: cover;
+    object-position: center top;
     aspect-ratio: 4/3;
     border: 2px solid #1f1f1f;
     transition: transform 0.3s ease, border-color 0.3s ease;
@@ -420,6 +411,7 @@
     width: 100%;
     display: block;
     object-fit: cover;
+    object-position: center top;
     aspect-ratio: 4/3;
     border-radius: 12px;
     border: 2px solid #1f1f1f;
@@ -500,6 +492,194 @@
     text-transform: uppercase;
   }
 
+
+  /* SOCIAL HIGHLIGHTS SECTION */
+  .social-highlights-section {
+    max-width: 920px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+  }
+  .social-highlights-heading {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+  .social-highlights-sub {
+    text-align: center;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+  .social-highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .social-highlight-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .social-highlight-card:hover {
+    border-color: #f97316;
+    transform: translateY(-3px);
+  }
+  .social-highlight-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .social-highlight-icon { font-size: 22px; }
+  .social-highlight-handle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f97316;
+  }
+  .social-highlight-platform {
+    font-size: 11px;
+    color: #4b5563;
+    margin-top: 1px;
+  }
+  .social-highlight-link {
+    margin-left: auto;
+    font-size: 11px;
+    color: #4b5563;
+    text-decoration: none;
+    background: rgba(249,115,22,0.1);
+    color: #f97316;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .social-highlight-link:hover { background: rgba(249,115,22,0.2); }
+  .social-highlight-embed {
+    width: 100%;
+    aspect-ratio: 9/16;
+    max-height: 420px;
+    background: #000;
+    display: block;
+    border: none;
+  }
+  .social-highlight-video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    max-height: 420px;
+    background: #000;
+    display: block;
+    object-fit: contain;
+  }
+  @media (max-width: 640px) {
+    .social-highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  /* TEAMS SECTION */
+  .teams-section {
+    max-width: 920px;
+    margin: 40px auto 0;
+    padding: 0 24px 60px;
+  }
+  .teams-heading {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .teams-sub {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+  }
+  .teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .team-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .team-card:hover {
+    border-color: #f97316;
+    background: #161616;
+    transform: translateY(-4px);
+  }
+  .team-logo-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+    transition: border-color 0.25s;
+    flex-shrink: 0;
+  }
+  .team-card:hover .team-logo-wrap { border-color: #f97316; }
+  .team-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+  .team-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #f97316;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+  .team-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .team-detail {
+    font-size: 11px;
+    color: #6b7280;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .team-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: #f97316;
+    background: rgba(249,115,22,0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
   /* FOOTER */
   .footer {
     text-align: center;
@@ -553,10 +733,7 @@
   }
   #music-player.collapsed .player-body { display: none; }
   #music-player.collapsed .collapse-btn { display: none; }
-  #music-player.collapsed::after {
-    content: '🎵';
-    font-size: 22px;
-  }
+  #music-player.collapsed::after { content: '🎵'; font-size: 22px; }
   .player-header {
     display: flex;
     align-items: center;
@@ -596,11 +773,8 @@
     justify-content: center;
     font-size: 20px;
     flex-shrink: 0;
-    animation: none;
   }
-  .track-art.spinning {
-    animation: vinyl 3s linear infinite;
-  }
+  .track-art.spinning { animation: vinyl 3s linear infinite; }
   @keyframes vinyl { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .track-info { flex: 1; overflow: hidden; }
   .track-name {
@@ -720,7 +894,37 @@
   .pi-info { flex: 1; overflow: hidden; }
   .pi-name { font-size: 12px; font-weight: 600; color: #e5e7eb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .pi-artist { font-size: 10px; color: #6b7280; }
-  #yt-frame { position: fixed; left: -9999px; top: -9999px; width: 200px; height: 200px; pointer-events: none; opacity: 0; }
+
+  /* BIRTHDAY BANNER */
+  #bday-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 2000;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    animation: bannerDrop 0.6s ease 0.5s both;
+    cursor: pointer;
+  }
+  @keyframes bannerDrop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+  }
+  #bday-banner .banner-close {
+    position: absolute;
+    right: 16px;
+    font-size: 18px;
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
   /* MOBILE */
   @media (max-width: 640px) {
@@ -730,25 +934,31 @@
     .card-photo, .card-content { width: 100%; }
     .card.right .card-content { text-align: left; }
     .hero-name { font-size: 60px; }
+    .teams-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
 
+<!-- BIRTHDAY BANNER -->
+<div id="bday-banner" onclick="closeBanner()">
+  🎂 HAPPY 20TH BIRTHDAY DREW! 🏀
+  <span class="banner-close" onclick="closeBanner()">✕</span>
+</div>
+
 <!-- HERO -->
-<section class="hero">
-  <!-- Background photo slideshow -->
+<section class="hero" style="margin-top:44px;">
   <div class="hero-slides">
-    <img src="img_drew_asphalt.jpg" alt="" loading="lazy">
-    <img src="bg_1.jpg" alt="" loading="lazy">
-    <img src="img_bpc_basketball.jpg" alt="" loading="lazy">
-    <img src="bg_2.jpg" alt="" loading="lazy">
-    <img src="img_gateway_lions.jpg" alt="" loading="lazy">
-    <img src="bg_3.jpg" alt="" loading="lazy">
-    <img src="img_drew_goldoff.jpg" alt="" loading="lazy">
-    <img src="bg_4.jpg" alt="" loading="lazy">
-    <img src="bg_5.jpg" alt="" loading="lazy">
-    <img src="bg_6.jpg" alt="" loading="lazy">
+    <img src="img_drew_goldoff.jpg"       alt="" loading="lazy" style="object-position: center 15%;">
+    <img src="Drew-SHS_Profile_Pic.jpg"   alt="" loading="lazy" style="object-position: center 10%;">
+    <img src="Scarsdale-LineUP.jpg"       alt="" loading="lazy" style="object-position: center 15%;">
+    <img src="img_drew_asphalt.jpg"       alt="" loading="lazy" style="object-position: center 10%;">
+    <img src="SHS-Varisty-Team-Pic.jpg"   alt="" loading="lazy" style="object-position: center 20%;">
+    <img src="hoopgroup-elite.jpg"        alt="" loading="lazy" style="object-position: center 15%;">
+    <img src="img_bpc_basketball.jpg"     alt="" loading="lazy" style="object-position: center 20%;">
+    <img src="Brooklyn-Nets-Drew.jpg"     alt="" loading="lazy" style="object-position: center 20%;">
+    <img src="bg_4.jpg"                   alt="" loading="lazy" style="object-position: center 20%;">
+    <img src="bg_6.jpg"                   alt="" loading="lazy" style="object-position: center 20%;">
   </div>
   <div class="hero-overlay"></div>
   <img class="hero-logo-watermark" src="img_drew_crew.png" alt="Drew Crew" onerror="this.style.display='none'">
@@ -797,38 +1007,28 @@
   <!-- ERA 0: BORN -->
   <div class="era-label">Born Into It · New York City · 2006</div>
 
-  <!-- Card 0A: Birth year -->
   <div class="card left">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">👶</span>
-        <span class="ph-text">Earliest Drew Photo</span>
-        <span class="ph-hint">Baby/toddler photo · 2006–2008<br>The beginning of the story</span>
-      </div>
+      <img src="Babydrew2.jpg" alt="Baby Drew Goldoff" style="object-position: center 10%;">
     </div>
     <div class="card-content">
       <div class="card-year">2006</div>
       <div class="card-age">Born June 5 · New York City</div>
       <div class="card-title">Day One</div>
-      <div class="card-desc">Drew Edward Goldoff enters the world in New York City on June 5, 2006. His Instagram handle one day will be <strong style="color:#f97316">DUNKS_A_LOT_DREW</strong> — but that story starts here. A New York kid through and through.</div>
+      <div class="card-desc">Drew Edward Goldoff enters the world in New York City on June 5, 2006. A New York kid through and through — from day one the energy was unmatched.</div>
       <span class="card-tag">NYC Born</span>
     </div>
   </div>
 
-  <!-- Card 0B: NYC playground ball -->
   <div class="card right">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">🏀</span>
-        <span class="ph-text">First Basketball Photo</span>
-        <span class="ph-hint">Earliest hoops moment · age 2–5<br>Check Drive: Camp WINADU 2016 folder or early family photos</span>
-      </div>
+      <img src="Dad-and-Drew.jpg" alt="Dad and Drew" style="object-position: center 15%;">
     </div>
     <div class="card-content">
       <div class="card-year">~2009</div>
       <div class="card-age">Age 3 · Growing Up NYC</div>
       <div class="card-title">NYC Kid With a Ball</div>
-      <div class="card-desc">Growing up in New York City means your playground is legendary. Drew was bouncing a ball before most kids could even hold one. The city that made the greats — and Drew soaked it all in from the start.</div>
+      <div class="card-desc">Growing up in New York City means your playground is legendary. Drew was bouncing a ball before most kids could even hold one.</div>
       <span class="card-tag">NYC Roots</span>
     </div>
   </div>
@@ -836,14 +1036,9 @@
   <!-- ERA 1: LITTLE KID -->
   <div class="era-label">The Early Years · Ages 5–8</div>
 
-  <!-- Card 1 -->
   <div class="card left">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">📸</span>
-        <span class="ph-text">Add Early Childhood Photo</span>
-        <span class="ph-hint">BPC Youth Basketball Dec 2016 or Camp WINADU · age 5–7<br><a href="https://drive.google.com/file/d/1Zwtnm-ISxkQ9C3UL-mQbWLBd8byUDDu8/view" target="_blank" style="color:#f97316">📂 Open from Drive →</a></span>
-      </div>
+      <img src="drew-bot-mitzvah.jpg" alt="Drew at his Bar Mitzvah" style="object-position: center 15%;">
     </div>
     <div class="card-content">
       <div class="card-year">~2012</div>
@@ -854,86 +1049,73 @@
     </div>
   </div>
 
-  <!-- Card 2 -->
   <div class="card right">
     <div class="card-photo">
-      <img src="img_gateway_lions.jpg" alt="Gateway Lions — Drew's NYC youth basketball team" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:4/3;border:2px solid #1f1f1f;">
+      <img src="img_bpc_basketball.jpg" alt="Drew at Asphalt Green Basketball — age 10" style="object-position: center 20%;">
     </div>
     <div class="card-content">
       <div class="card-year">~2014</div>
       <div class="card-age">Age 8 · First Real Team</div>
-      <div class="card-title">Finding His Squad</div>
-      <div class="card-desc">The team photo, the matching jerseys, the post-game orange slices. Drew discovered that basketball is even better when you're playing with your crew beside you.</div>
-      <span class="card-tag">Youth League</span>
+      <div class="card-title">Asphalt Green — Finding His Squad</div>
+      <div class="card-desc">The matching jerseys, the post-game huddle. Drew discovered that basketball is even better when you're playing with your crew beside you. Asphalt Green NYC — where it all started getting serious.</div>
+      <span class="card-tag">Asphalt Green</span>
     </div>
   </div>
 
   <!-- ERA 2: MIDDLE SCHOOL -->
   <div class="era-label">Coming Up · Ages 10–13</div>
 
-  <!-- Card 3 -->
   <div class="card left">
     <div class="card-photo">
-      <img src="img_bpc_basketball.jpg" alt="BPC Youth Basketball December 2016 — Drew age 10" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:4/3;border:2px solid #1f1f1f;">
+      <img src="drew-winadu.jpg" alt="Drew at Camp Winadu" style="object-position: center 15%;">
     </div>
     <div class="card-content">
       <div class="card-year">~2016</div>
-      <div class="card-age">Age 10–11 · Point Guard Emerges</div>
-      <div class="card-title">Running the Point</div>
-      <div class="card-desc">This is where Drew found his position and never looked back. Running the offense, directing traffic, making everyone around him better — the classic point guard mentality took hold.</div>
-      <span class="card-tag">Travel Ball</span>
+      <div class="card-age">Age 10–11 · Camp Winadu</div>
+      <div class="card-title">Running the Point at Winadu</div>
+      <div class="card-desc">Camp WINADU was where summers became basketball training camps. Drew found his position and never looked back — the point guard mentality took hold.</div>
+      <span class="card-tag">Camp Winadu</span>
     </div>
   </div>
 
-  <!-- Card 4 -->
   <div class="card right">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">📸</span>
-        <span class="ph-text">Add Award / Trophy Photo</span>
-        <span class="ph-hint">Trophy, medal, or award ceremony<br>A great moment to highlight his competitive wins</span>
-      </div>
+      <img src="Brooklyn-Nets-Drew.jpg" alt="Drew at Brooklyn Nets game" style="object-position: center 20%;">
     </div>
     <div class="card-content">
-      <div class="card-year">~2018</div>
-      <div class="card-age">Age 12 · First Big Win</div>
-      <div class="card-title">Hardware Time</div>
-      <div class="card-desc">All the early-morning practices, the weekend tournaments, the gym hours — they started paying off with hardware. Drew learned that winning tastes better when you've earned every point.</div>
-      <span class="card-tag">Award</span>
+      <div class="card-year">~2017</div>
+      <div class="card-age">Age 11 · Courtside Dreaming</div>
+      <div class="card-title">Brooklyn Nets — Watching the Pros</div>
+      <div class="card-desc">You become who you watch. Courtside at the Nets, studying every move, every play, every crossover. The dream was getting clearer by the game.</div>
+      <span class="card-tag">NYC Basketball</span>
     </div>
   </div>
 
   <!-- ERA 3: HIGH SCHOOL RISE -->
   <div class="era-label">High School Rise · Scarsdale</div>
 
-  <!-- Card 5 -->
   <div class="card left">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">📸</span>
-        <span class="ph-text">Add JV / Early High School Photo</span>
-        <span class="ph-hint">JV game or early Scarsdale team photo<br>Age 14–15</span>
-      </div>
+      <img src="hoopgroup-elite.jpg" alt="Drew Goldoff — Hoop Group Elite Exposure Tour" style="object-position: center 15%;">
     </div>
     <div class="card-content">
-      <div class="card-year">~2020</div>
-      <div class="card-age">Age 14 · Scarsdale JV</div>
-      <div class="card-title">Raider in the Making</div>
-      <div class="card-desc">Drew put on the Scarsdale uniform and the grind intensified. High school ball is where boys become players — tougher defense, faster pace, higher stakes. He was built for it.</div>
-      <span class="card-tag">Scarsdale JV</span>
+      <div class="card-year">~2022</div>
+      <div class="card-age">Age 16 · Getting Noticed</div>
+      <div class="card-title">Hoop Group Elite — NYC Exposure Tour</div>
+      <div class="card-desc">Drew Goldoff. Committed. Hoop Group Elite NYC Exposure Tour at Riverbank State Park. When your name starts showing up on event flyers — you're doing something right.</div>
+      <span class="card-tag">Hoop Group Elite</span>
     </div>
   </div>
 
-  <!-- Card 6: Raiders team photo -->
   <div class="card right">
     <div class="card-photo">
-      <img src="img_drew_goldoff.jpg" alt="Drew Goldoff — Scarsdale Varsity" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:4/3;border:2px solid #1f1f1f;">
+      <img src="img_drew_goldoff.jpg" alt="Drew Goldoff — Scarsdale Varsity #21" style="object-position: center 15%;">
     </div>
     <div class="card-content">
       <div class="card-year">2023</div>
       <div class="card-age">Age 17 · Varsity Raiders</div>
       <div class="card-title">Scarsdale Varsity — #21</div>
-      <div class="card-desc">Number 21. Scarsdale Raiders. The jersey he worked his whole life for. Stepping onto the varsity floor was the culmination of a decade of dedication, early mornings, and a love for the game that never wavered.</div>
+      <div class="card-desc">Number 21. Scarsdale Raiders. The jersey he worked his whole life for. Stepping onto the varsity floor was the culmination of a decade of dedication and a love for the game that never wavered.</div>
       <span class="card-tag">Varsity · #21</span>
     </div>
   </div>
@@ -941,49 +1123,38 @@
   <!-- ERA 4: THE PEAK -->
   <div class="era-label">Senior Season · The Farewell Tour</div>
 
-  <!-- Card 7: Action shot -->
   <div class="card left">
     <div class="card-photo">
-      <img src="img_drew_asphalt.jpg" alt="Drew Goldoff playing basketball at Asphalt Green, NYC" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:4/3;border:2px solid #1f1f1f;">
+      <img src="Scarsdale-LineUP.jpg" alt="Drew Goldoff — Scarsdale Raiders lineup 2024" style="object-position: center 12%;">
     </div>
     <div class="card-content">
       <div class="card-year">2024</div>
       <div class="card-age">Age 18 · Game Time</div>
       <div class="card-title">The Jump Shot That Matters</div>
-      <div class="card-desc">Pulling up over two defenders, ball at the peak of his release, the gym holding its breath. This is Drew in his element — composed, confident, and fearless when it matters most.</div>
+      <div class="card-desc">Pulling up in the Scarsdale gym, #21 on his back, composed and fearless. This is Drew in his element — the game slowed down, everything clicking.</div>
       <span class="card-tag">Scarsdale Varsity</span>
     </div>
   </div>
 
-  <!-- Card 8: Senior Night -->
   <div class="card right">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">📸</span>
-        <span class="ph-text">Add Senior Night Photo</span>
-        <span class="ph-hint">The Feb 12, 2025 family photo with balloons and #21 Goldoff jersey from the album — an emotional must-have moment</span>
-      </div>
+      <img src="SHS-Varisty-Team-Pic.jpg" alt="Scarsdale High School Boys Varsity Basketball 2024" style="object-position: center 20%;">
     </div>
     <div class="card-content">
-      <div class="card-year">Feb 2025</div>
-      <div class="card-age">Age 18 · Senior Night</div>
-      <div class="card-title">Senior Night — The Last Dance</div>
-      <div class="card-desc">Balloons, family, and "Goldoff" on the back of the jersey one final time as a Raider. Senior Night is where all of it — every practice, every game, every road trip — comes together in one beautiful moment.</div>
-      <span class="card-tag">Senior Night</span>
+      <div class="card-year">2024–25</div>
+      <div class="card-age">Age 18 · Final Season</div>
+      <div class="card-title">Scarsdale Raiders — One Last Run</div>
+      <div class="card-desc">The full squad. Scarsdale High School Boys Varsity Basketball. Drew earned his spot among the best players the school had to offer, suiting up alongside brothers he'll remember forever.</div>
+      <span class="card-tag">Senior Year</span>
     </div>
   </div>
 
   <!-- ERA 5: WHAT'S NEXT -->
-  <div class="era-label">The Next Chapter · College & Beyond</div>
+  <div class="era-label">The Next Chapter · College &amp; Beyond</div>
 
-  <!-- Card 9: University of Hartford -->
   <div class="card left">
     <div class="card-photo">
-      <div class="placeholder-photo">
-        <span class="ph-icon">📸</span>
-        <span class="ph-text">Add University of Hartford Card</span>
-        <span class="ph-hint">The Drew Goldoff · University of Hartford · Business &amp; Sports Management card from the Apr 2025 album</span>
-      </div>
+      <img src="Drew-SHS_Profile_Pic.jpg" alt="Drew Goldoff — Scarsdale dribbling in gear" style="object-position: center 10%;">
     </div>
     <div class="card-content">
       <div class="card-year">2025</div>
@@ -994,10 +1165,9 @@
     </div>
   </div>
 
-  <!-- Card 10: Now (the outdoor basketball photo) -->
   <div class="card right">
     <div class="card-photo">
-      <img src="data:image/jpeg;base64,PLACEHOLDER_DREW_OUTDOOR" alt="Drew Goldoff — Age 20, outdoor basketball" onerror="this.parentElement.innerHTML='<div class=\'placeholder-photo\'><span class=\'ph-icon\'>📸</span><span class=\'ph-text\'>Drew Today · Age 20</span><span class=\'ph-hint\'>The outdoor basketball photo you sent — summer 2025</span></div>'">
+      <img src="img_drew_asphalt.jpg" alt="Drew Goldoff — outdoor basketball age 20" style="object-position: center 10%;">
     </div>
     <div class="card-content">
       <div class="card-year">2026</div>
@@ -1009,6 +1179,123 @@
   </div>
 
 </div><!-- /timeline -->
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
+
+
+<!-- SOCIAL HIGHLIGHTS -->
+<div class="social-highlights-section">
+  <div class="social-highlights-heading">Highlights &amp; Clips</div>
+  <div class="social-highlights-sub">Follow the journey · All hoops, all the time</div>
+  <div class="social-highlights-grid">
+
+    <!-- Instagram -->
+    <div class="social-highlight-card">
+      <div class="social-highlight-header">
+        <span class="social-highlight-icon">📸</span>
+        <div>
+          <div class="social-highlight-handle">@drewgoldoff_basketball</div>
+          <div class="social-highlight-platform">Instagram · Basketball Highlights</div>
+        </div>
+        <a class="social-highlight-link" href="https://www.instagram.com/drewgoldoff_basketball/" target="_blank" rel="noopener">Follow →</a>
+      </div>
+      <!-- Instagram embed via blockquote -->
+      <div style="padding:0;background:#000;min-height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+        <a href="https://www.instagram.com/drewgoldoff_basketball/" target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:32px 20px;text-decoration:none;">
+          <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#f97316,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:32px;">📸</div>
+          <div style="color:#f97316;font-weight:700;font-size:15px;font-family:Inter,sans-serif;">@drewgoldoff_basketball</div>
+          <div style="color:#6b7280;font-size:12px;text-align:center;max-width:200px;line-height:1.5;font-family:Inter,sans-serif;">Game clips, training drills &amp; highlights from Scarsdale's #21</div>
+          <div style="background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;font-weight:700;font-size:12px;padding:8px 20px;border-radius:100px;letter-spacing:1px;">VIEW ON INSTAGRAM →</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="social-highlight-card">
+      <div class="social-highlight-header">
+        <span class="social-highlight-icon">▶️</span>
+        <div>
+          <div class="social-highlight-handle">@DrewBasketballGoldoff</div>
+          <div class="social-highlight-platform">YouTube · 16 Videos · Training &amp; Games</div>
+        </div>
+        <a class="social-highlight-link" href="https://www.youtube.com/@DrewBasketballGoldoff/videos" target="_blank" rel="noopener">Subscribe →</a>
+      </div>
+      <!-- YouTube latest highlight embed -->
+      <iframe
+        class="social-highlight-embed"
+        src="https://www.youtube.com/embed/PuOG-j9Q3Hc?rel=0&modestbranding=1"
+        title="Drew Goldoff — Scarsdale Varsity 2024"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" style="margin-top:40px;"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
+
+<!-- TEAMS SECTION -->
+<div class="teams-section">
+  <div class="teams-heading">Teams That Made Drew</div>
+  <div class="teams-sub">Every team. Every coach. Every game. Part of the journey.</div>
+  <div class="teams-grid">
+
+    <!-- The City -->
+    <a class="team-card" href="https://thecitybball.org/" target="_blank" rel="noopener">
+      <div class="team-logo-wrap" style="background:#111; border-color:#333;">
+        <img src="https://images.squarespace-cdn.com/content/v1/59800f7115d5db77a62558f7/1576609643442-SJSNLWDWTFME4Z8B1RXZ/THE.CITY.LOGO.JPEG?format=500w"
+             alt="The City Grassroots Basketball logo"
+             onerror="this.parentElement.innerHTML='<div class=\'team-logo-text\'>THE<br>CITY</div>';">
+      </div>
+      <div class="team-name">The City Grassroots</div>
+      <div class="team-detail">NYC · Grassroots Hoops</div>
+      <div class="team-badge">AAU · Travel Ball</div>
+    </a>
+
+    <!-- Atlantic Sharks -->
+    <a class="team-card" href="https://www.atlanticsharksbasketball.com/" target="_blank" rel="noopener">
+      <div class="team-logo-wrap">
+        <img src="https://static.wixstatic.com/media/20f71e_fdcf7c0659c4473fae6333a481e7aed0~mv2.png"
+             alt="Atlantic Sharks logo"
+             onerror="this.parentElement.innerHTML='<div class=\'team-logo-text\'>🦈</div>'">
+      </div>
+      <div class="team-name">Scarsdale Atlantic Sharks</div>
+      <div class="team-detail">Westchester · AAU Basketball</div>
+      <div class="team-badge">Travel Ball</div>
+    </a>
+
+    <!-- Riverside Hawks -->
+    <a class="team-card" href="https://riversidehawks.org/basketball/" target="_blank" rel="noopener">
+      <div class="team-logo-wrap" style="background:#fff;">
+        <img src="https://riversidehawks.org/wp-content/uploads/2021/12/Riverside-Hawks-Logo_white_backgrounds.png"
+             alt="Riverside Hawks Basketball logo"
+             onerror="this.parentElement.innerHTML='<div class=\'team-logo-text\'>🦅</div>'; this.parentElement.style.background='#1a1a1a';">
+      </div>
+      <div class="team-name">Riverside Hawks Select</div>
+      <div class="team-detail">Coach Kuba · NYC</div>
+      <div class="team-badge">Select Program</div>
+    </a>
+
+    <!-- Scarsdale HS -->
+    <a class="team-card" href="https://shs.scarsdaleschools.org/25924_4" target="_blank" rel="noopener">
+      <div class="team-logo-wrap" style="background:#6b0f1a;">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:70px;height:70px;padding:4px;">
+          <circle cx="40" cy="40" r="36" fill="#6b0f1a" stroke="#c9a84c" stroke-width="3"/>
+          <text x="40" y="28" text-anchor="middle" fill="#c9a84c" font-size="9" font-family="serif" font-weight="bold" letter-spacing="1">SCARSDALE</text>
+          <text x="40" y="40" text-anchor="middle" fill="#fff" font-size="14" font-family="serif" font-weight="bold">SHS</text>
+          <text x="40" y="52" text-anchor="middle" fill="#c9a84c" font-size="8" font-family="serif" font-weight="bold" letter-spacing="2">RAIDERS</text>
+          <text x="40" y="63" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif">EST. 1917</text>
+        </svg>
+      </div>
+      <div class="team-name">Scarsdale HS Varsity</div>
+      <div class="team-detail">Raiders · #21 · 2020–2025</div>
+      <div class="team-badge">Varsity Starter</div>
+    </a>
+
+  </div>
+</div>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
 
@@ -1047,7 +1334,7 @@
       <input type="range" class="vol-slider" id="vol-slider" min="0" max="100" value="70" oninput="setVolume(this.value)">
       <span class="vol-icon">🔊</span>
     </div>
-    <div class="playlist-toggle" onclick="togglePlaylist(event)">▾ Playlist (10 tracks)</div>
+    <div class="playlist-toggle" onclick="togglePlaylist(event)">▾ Playlist (12 tracks)</div>
     <div class="playlist" id="playlist-panel"></div>
   </div>
 </div>
@@ -1056,6 +1343,80 @@
 <div id="yt-player" style="position:fixed;left:-9999px;top:-9999px;width:200px;height:200px;pointer-events:none;"></div>
 
 <script>
+// ── HAPPY BIRTHDAY SONG ─────────────────────────────────────────
+function playHappyBirthday() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return;
+  const ctx = new AudioCtx();
+
+  // Happy Birthday melody: note frequencies and durations
+  // C4=261.63, D4=293.66, E4=329.63, F4=349.23, G4=392.00, A4=440, B4=493.88
+  // C5=523.25, D5=587.33
+  const notes = [
+    // "Hap-py birth-day to you" x2, "Hap-py birth-day dear Drew", "Hap-py birth-day to you"
+    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[523,0.4],[493.88,0.8],  // Happy Birthday to you
+    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[587.33,0.4],[523,0.8],  // Happy Birthday to you
+    [392,0.3],[392,0.1],[784,0.4],[659.25,0.4],[523,0.4],[493.88,0.4],[440,0.8], // Happy Birthday dear Drew
+    [698.46,0.3],[698.46,0.1],[659.25,0.4],[523,0.4],[587.33,0.4],[523,0.9],     // Happy Birthday to you
+  ];
+
+  let time = ctx.currentTime + 0.1;
+  notes.forEach(([freq, dur]) => {
+    if (freq === 0) { time += dur; return; }
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, time);
+    gain.gain.setValueAtTime(0.0, time);
+    gain.gain.linearRampToValueAtTime(0.3, time + 0.02);
+    gain.gain.setValueAtTime(0.3, time + dur - 0.05);
+    gain.gain.linearRampToValueAtTime(0.0, time + dur);
+    osc.start(time);
+    osc.stop(time + dur);
+    time += dur + 0.02;
+  });
+}
+
+// Play once on first user interaction (autoplay policy)
+let bdayPlayed = false;
+function triggerBday() {
+  if (bdayPlayed) return;
+  bdayPlayed = true;
+  playHappyBirthday();
+  document.removeEventListener('click', triggerBday);
+  document.removeEventListener('keydown', triggerBday);
+  document.removeEventListener('touchstart', triggerBday);
+}
+// Try to play immediately (works if page was interacted with already)
+setTimeout(() => {
+  try {
+    if (!bdayPlayed) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      const testCtx = new AudioCtx();
+      if (testCtx.state === 'running') {
+        testCtx.close();
+        triggerBday();
+      } else {
+        testCtx.close();
+        document.addEventListener('click', triggerBday, {once: true});
+        document.addEventListener('keydown', triggerBday, {once: true});
+        document.addEventListener('touchstart', triggerBday, {once: true});
+      }
+    }
+  } catch(e) {
+    document.addEventListener('click', triggerBday, {once: true});
+  }
+}, 800);
+
+// ── BIRTHDAY BANNER ──────────────────────────────────────────────
+function closeBanner() {
+  const b = document.getElementById('bday-banner');
+  if (b) { b.style.transition = 'opacity 0.3s'; b.style.opacity = '0'; setTimeout(() => b.remove(), 300); }
+  document.querySelector('.hero').style.marginTop = '0';
+}
+
 // ── PLAYLIST ────────────────────────────────────────────────────
 const PLAYLIST = [
   { name: "Started From the Bottom", artist: "Drake", yt: "RubBzkZzpUA", emoji: "👑" },
@@ -1069,21 +1430,13 @@ const PLAYLIST = [
   { name: "No Role Modelz", artist: "J. Cole", yt: "nSERqaFagJc", emoji: "🎯" },
   { name: "DNA.", artist: "Kendrick Lamar", yt: "NLZRYQMLDW4", emoji: "🧬" },
   { name: "Forever", artist: "Drake, Kanye, Lil Wayne, Eminem", yt: "eDuRoPIOBjE", emoji: "♾️" },
-  { name: "N.Y. State of Mind", artist: "Nas", yt: "Rp4qXCneXRU", emoji: "🏙️" }
+  { name: "N.Y. State of Mind", artist: "Nas", yt: "Rp4qXCneXRU", emoji: "🏙️" },
 ];
 
-// ── STATE ────────────────────────────────────────────────────────
-let currentIdx = 0;
-let isPlaying = false;
-let isRepeat = false;
-let progressInterval = null;
-let progressVal = 0;
-let ytReady = false;
-let ytPlayer = null;
-
+let currentIdx = 0, isPlaying = false, isRepeat = false;
+let progressInterval = null, ytReady = false, ytPlayer = null;
 const playerEl = document.getElementById('music-player');
 
-// ── LOAD YOUTUBE IFRAME API ─────────────────────────────────────
 (function() {
   const tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
@@ -1106,11 +1459,8 @@ function onYouTubeIframeAPIReady() {
           document.getElementById('play-btn').textContent = '⏸';
           document.getElementById('track-art').classList.add('spinning');
           startProgress();
-        } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.BUFFERING) {
-          // keep UI consistent
         } else if (e.data === YT.PlayerState.ENDED) {
           clearInterval(progressInterval);
-          progressVal = 0;
           document.getElementById('progress-bar').style.width = '0%';
           if (isRepeat) { ytPlayer.seekTo(0); ytPlayer.playVideo(); }
           else nextTrack(null);
@@ -1120,7 +1470,6 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-// ── UI HELPERS ───────────────────────────────────────────────────
 function buildPlaylist() {
   const panel = document.getElementById('playlist-panel');
   panel.innerHTML = PLAYLIST.map((t, i) => `
@@ -1139,8 +1488,7 @@ function updateUI() {
   document.getElementById('track-name').textContent = t.name;
   document.getElementById('track-artist').textContent = t.artist;
   document.getElementById('track-art').textContent = t.emoji;
-  document.querySelectorAll('.playlist-item').forEach((el,i) =>
-    el.classList.toggle('active', i === currentIdx));
+  document.querySelectorAll('.playlist-item').forEach((el,i) => el.classList.toggle('active', i === currentIdx));
 }
 
 function startProgress() {
@@ -1149,126 +1497,65 @@ function startProgress() {
     if (!ytReady || !ytPlayer) return;
     const dur = ytPlayer.getDuration ? ytPlayer.getDuration() : 0;
     const cur = ytPlayer.getCurrentTime ? ytPlayer.getCurrentTime() : 0;
-    progressVal = dur > 0 ? (cur / dur) * 100 : 0;
-    document.getElementById('progress-bar').style.width = progressVal + '%';
+    document.getElementById('progress-bar').style.width = (dur > 0 ? (cur/dur)*100 : 0) + '%';
   }, 800);
 }
 
-// ── CONTROLS ─────────────────────────────────────────────────────
 function loadTrack(idx, autoplay) {
   currentIdx = idx;
   updateUI();
-  progressVal = 0;
   document.getElementById('progress-bar').style.width = '0%';
   clearInterval(progressInterval);
   if (!ytReady || !ytPlayer) return;
-  if (autoplay) {
-    ytPlayer.loadVideoById(PLAYLIST[idx].yt);
-    isPlaying = true;
-  } else {
-    ytPlayer.cueVideoById(PLAYLIST[idx].yt);
-    isPlaying = false;
-    document.getElementById('play-btn').textContent = '▶';
-    document.getElementById('track-art').classList.remove('spinning');
-  }
+  if (autoplay) { ytPlayer.loadVideoById(PLAYLIST[idx].yt); isPlaying = true; }
+  else { ytPlayer.cueVideoById(PLAYLIST[idx].yt); isPlaying = false; document.getElementById('play-btn').textContent = '▶'; document.getElementById('track-art').classList.remove('spinning'); }
 }
 
 function togglePlay(e) {
   if(e) e.stopPropagation();
   if (!ytReady || !ytPlayer) { alert('Player loading — try again in a moment'); return; }
   if (isPlaying) {
-    ytPlayer.pauseVideo();
-    isPlaying = false;
+    ytPlayer.pauseVideo(); isPlaying = false;
     document.getElementById('play-btn').textContent = '▶';
     document.getElementById('track-art').classList.remove('spinning');
     clearInterval(progressInterval);
   } else {
-    ytPlayer.playVideo();
-    isPlaying = true;
+    ytPlayer.playVideo(); isPlaying = true;
     document.getElementById('play-btn').textContent = '⏸';
     document.getElementById('track-art').classList.add('spinning');
     startProgress();
   }
 }
 
-function nextTrack(e) {
-  if(e) e.stopPropagation();
-  loadTrack((currentIdx + 1) % PLAYLIST.length, isPlaying);
-}
-
-function prevTrack(e) {
-  if(e) e.stopPropagation();
-  loadTrack((currentIdx - 1 + PLAYLIST.length) % PLAYLIST.length, isPlaying);
-}
-
-function selectTrack(e, idx) {
-  if(e) e.stopPropagation();
-  isPlaying = true;
-  loadTrack(idx, true);
-}
-
-function shufflePlaylist(e) {
-  if(e) e.stopPropagation();
-  const idx = Math.floor(Math.random() * PLAYLIST.length);
-  isPlaying = true;
-  loadTrack(idx, true);
-}
-
-function toggleRepeat(e) {
-  if(e) e.stopPropagation();
-  isRepeat = !isRepeat;
-  document.getElementById('repeat-btn').style.color = isRepeat ? '#f97316' : '';
-}
-
-function setVolume(val) {
-  if (ytReady && ytPlayer) ytPlayer.setVolume(parseInt(val));
-}
-
-function collapsePlayer(e) {
-  if(e) e.stopPropagation();
-  playerEl.classList.add('collapsed');
-}
-function handlePlayerClick(e) {
-  if (playerEl.classList.contains('collapsed')) playerEl.classList.remove('collapsed');
-}
-function togglePlaylist(e) {
-  if(e) e.stopPropagation();
-  document.getElementById('playlist-panel').classList.toggle('open');
-}
+function nextTrack(e) { if(e) e.stopPropagation(); loadTrack((currentIdx+1) % PLAYLIST.length, isPlaying); }
+function prevTrack(e) { if(e) e.stopPropagation(); loadTrack((currentIdx-1+PLAYLIST.length) % PLAYLIST.length, isPlaying); }
+function selectTrack(e, idx) { if(e) e.stopPropagation(); isPlaying = true; loadTrack(idx, true); }
+function shufflePlaylist(e) { if(e) e.stopPropagation(); isPlaying = true; loadTrack(Math.floor(Math.random()*PLAYLIST.length), true); }
+function toggleRepeat(e) { if(e) e.stopPropagation(); isRepeat = !isRepeat; document.getElementById('repeat-btn').style.color = isRepeat ? '#f97316' : ''; }
+function setVolume(val) { if (ytReady && ytPlayer) ytPlayer.setVolume(parseInt(val)); }
+function collapsePlayer(e) { if(e) e.stopPropagation(); playerEl.classList.add('collapsed'); }
+function handlePlayerClick(e) { if (playerEl.classList.contains('collapsed')) playerEl.classList.remove('collapsed'); }
+function togglePlaylist(e) { if(e) e.stopPropagation(); document.getElementById('playlist-panel').classList.toggle('open'); }
 
 // ── VIDEO SLOTS ──────────────────────────────────────────────────
-function loadVideo(inputEl, slotEl) {
-  const url = inputEl.value.trim();
-  if (!url) return;
-  const match = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
-  if (!match) { alert('Paste a valid YouTube URL'); return; }
-  const vid = match[1];
-  slotEl.innerHTML = `
-    <iframe src="https://www.youtube.com/embed/${vid}?rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-    <button class="video-remove-btn" onclick="clearVideo(this)" title="Remove video">✕</button>`;
-  slotEl.style.border = '2px solid #f97316';
-}
+const DREW_VIDEOS = [
+  { id: '5eBY6TOAanU',      type: 'yt',    label: 'Sharks Elite AAU Summer 2022' },
+  { id: '9buh4G85iC8',      type: 'yt',    label: 'Training w/ Nick @ Infinity Sports NYC' },
+  { id: 'L4z8gsPNJSQ',      type: 'yt',    label: 'Atlantic Sharks AAU – Westchester 2022' },
+  { id: '7Rubk3_Ipuc',      type: 'yt',    label: 'Riverside Hawks Select' },
+  { src: 'sharks_video.mp4', type: 'local', label: '🦈 Atlantic Sharks – AAU Travel Ball' },
+  { id: 'Znt5Tyk8Nco',      type: 'yt',    label: '2023 Las Vegas NBA Summer League' },
+  { id: 'Np5AE76kmiA',      type: 'yt',    label: 'Brewster Bears vs Edgemont Panthers' },
+  { id: 'aZK0Lc-X8zA',      type: 'yt',    label: 'San Diego Holiday Classic Dec 2023' },
+  { src: 'vegas_drew.mp4',   type: 'local', label: '🎰 Las Vegas – Drew on the Court' },
+  { id: 'PuOG-j9Q3Hc',      type: 'yt',    label: '2024 Scarsdale Varsity Game' },
+  { id: 'X_WVuICRSlM',      type: 'yt',    label: 'Pro Hoops Summer 2024' },
+  { id: 'BT1OkjESgfY',      type: 'yt',    label: 'Sundays at Pro Hoops – East Harlem' },
+];
 
-function clearVideo(btn) {
-  const slot = btn.closest('.video-slot');
-  const parentCard = slot.closest('.card-content') || slot.closest('.card-photo');
-  slot.style.border = '2px dashed #2a2a2a';
-  slot.innerHTML = slot._originalHTML || slot.innerHTML;
-  // Rebuild the input
-  wireVideoSlots();
-}
-
-function wireVideoSlots() {
-  document.querySelectorAll('.video-slot').forEach(slot => {
-    if (slot.querySelector('iframe')) return; // already has video
-    slot._originalHTML = slot.innerHTML;
-  });
-}
-
-// ── INJECT VIDEO SLOTS INTO ALL CARDS ────────────────────────────
 function injectVideoSlots() {
   document.querySelectorAll('.card-content').forEach((content, i) => {
-    if (content.querySelector('.video-slot')) return; // already has one
+    if (content.querySelector('.video-slot')) return;
     const slot = document.createElement('div');
     slot.className = 'video-slot';
     slot.id = 'vslot-' + i;
@@ -1282,49 +1569,6 @@ function injectVideoSlots() {
   });
 }
 
-function loadVideoFromSlot(btn) {
-  const slot = btn.closest('.video-slot');
-  const input = slot.querySelector('.video-url-input');
-  const url = input.value.trim();
-  if (!url) { input.focus(); return; }
-  const match = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
-  if (!match) { input.style.borderColor='#ef4444'; setTimeout(()=>input.style.borderColor='',2000); return; }
-  const vid = match[1];
-  slot.innerHTML = `
-    <iframe src="https://www.youtube.com/embed/${vid}?rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-    <button class="video-remove-btn" onclick="removeVideo(this)">✕ Remove</button>`;
-  slot.style.border = '2px solid #f97316';
-}
-
-function removeVideo(btn) {
-  const slot = btn.closest('.video-slot');
-  const idx = slot.id.replace('vslot-','');
-  slot.style.border = '2px dashed #2a2a2a';
-  slot.innerHTML = `
-    <div class="video-label">🎬 Add Video Clip</div>
-    <div class="video-input-row">
-      <input type="text" class="video-url-input" placeholder="Paste YouTube URL here...">
-      <button class="video-load-btn" onclick="loadVideoFromSlot(this)">▶ Load</button>
-    </div>`;
-}
-
-// ── PRE-LOADED DREW VIDEOS (mapped to each timeline card in order) ─
-// type: 'yt' = YouTube embed | type: 'local' = self-hosted MP4
-const DREW_VIDEOS = [
-  { id: '5eBY6TOAanU',     type: 'yt',    label: 'Sharks Elite AAU Summer 2022' },
-  { id: '9buh4G85iC8',     type: 'yt',    label: 'Training w/ Nick @ Infinrity Sports NYC' },
-  { id: 'L4z8gsPNJSQ',     type: 'yt',    label: 'Atlantic Sharks AAU – Westchester 2022' },
-  { id: '7Rubk3_Ipuc',     type: 'yt',    label: 'Riverside Hawks Select' },
-  { src: 'sharks_video.mp4', type: 'local', label: '🦈 Atlantic Sharks – AAU Travel Ball' },
-  { id: 'Znt5Tyk8Nco',     type: 'yt',    label: '2023 Las Vegas NBA Summer League' },
-  { id: 'Np5AE76kmiA',     type: 'yt',    label: 'Brewster Bears vrs Edgemont Panthers' },
-  { id: 'aZK0Lc-X8zA',     type: 'yt',    label: 'San Diego Holiday Classic Dec 2023' },
-  { src: 'vegas_drew.mp4',  type: 'local', label: '🎰 Las Vegas – Drew on the Court' },
-  { id: 'PuOG-j9Q3Hc',     type: 'yt',    label: '2024 Scarsdale Varsity Game' },
-  { id: 'X_WVuICRSlM',     type: 'yt',    label: 'Pro Hoops Summer 2024' },
-  { id: 'BT1OkjESgfY',     type: 'yt',    label: 'Sundays at Pro Hoops – East Harlem' },
-];
-
 function preloadVideos() {
   const slots = document.querySelectorAll('.video-slot');
   slots.forEach((slot, i) => {
@@ -1333,34 +1577,35 @@ function preloadVideos() {
       const labelHTML = `<div style="padding:6px 10px 2px;font-size:10px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;">🎬 ${v.label}</div>`;
       const removeBtn = `<button class="video-remove-btn" onclick="removeVideo(this)">✕</button>`;
       if (v.type === 'local') {
-        slot.innerHTML = `${labelHTML}
-          <video style="width:100%;aspect-ratio:9/16;display:block;background:#000;border-radius:0 0 8px 8px;max-height:420px;object-fit:contain;" controls playsinline preload="metadata">
-            <source src="${v.src}" type="video/mp4">
-          </video>${removeBtn}`;
+        slot.innerHTML = `${labelHTML}<video style="width:100%;aspect-ratio:16/9;display:block;background:#000;border-radius:0 0 8px 8px;object-fit:contain;" controls playsinline preload="metadata"><source src="${v.src}" type="video/mp4"></video>${removeBtn}`;
       } else {
-        slot.innerHTML = `${labelHTML}
-          <iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-          ${removeBtn}`;
+        slot.innerHTML = `${labelHTML}<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>${removeBtn}`;
       }
       slot.style.border = '2px solid rgba(249,115,22,0.6)';
     }
   });
 }
 
-// ── INIT ─────────────────────────────────────────────────────────
-buildPlaylist();
-updateUI();
-document.addEventListener('DOMContentLoaded', () => {
-  injectVideoSlots();
-  wirePhotoSlots();
-  setTimeout(preloadVideos, 200);
-});
-setTimeout(() => { injectVideoSlots(); wirePhotoSlots(); setTimeout(preloadVideos, 300); }, 600);
+function loadVideoFromSlot(btn) {
+  const slot = btn.closest('.video-slot');
+  const input = slot.querySelector('.video-url-input');
+  const url = input.value.trim();
+  if (!url) { input.focus(); return; }
+  const match = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+  if (!match) { input.style.borderColor='#ef4444'; setTimeout(()=>input.style.borderColor='',2000); return; }
+  slot.innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe><button class="video-remove-btn" onclick="removeVideo(this)">✕</button>`;
+  slot.style.border = '2px solid #f97316';
+}
 
-// ── PHOTO UPLOAD LOGIC ──────────────────────────────────────────
+function removeVideo(btn) {
+  const slot = btn.closest('.video-slot');
+  slot.style.border = '2px dashed #2a2a2a';
+  slot.innerHTML = `<div class="video-label">🎬 Add Video Clip</div><div class="video-input-row"><input type="text" class="video-url-input" placeholder="Paste YouTube URL here..."><button class="video-load-btn" onclick="loadVideoFromSlot(this)">▶ Load</button></div>`;
+}
+
+// ── PHOTO UPLOAD LOGIC ───────────────────────────────────────────
 function wirePhotoSlots() {
-  document.querySelectorAll('.placeholder-photo').forEach((placeholder, i) => {
-    // Create a hidden file input inside each placeholder
+  document.querySelectorAll('.placeholder-photo').forEach((placeholder) => {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
@@ -1368,9 +1613,7 @@ function wirePhotoSlots() {
     input.addEventListener('change', function() {
       if (this.files && this.files[0]) {
         const reader = new FileReader();
-        reader.onload = function(e) {
-          replaceWithPhoto(placeholder, e.target.result);
-        };
+        reader.onload = function(e) { replaceWithPhoto(placeholder, e.target.result); };
         reader.readAsDataURL(this.files[0]);
       }
     });
@@ -1381,56 +1624,30 @@ function wirePhotoSlots() {
 }
 
 function replaceWithPhoto(placeholder, src) {
-  const container = placeholder.parentElement; // .card-photo div
-  // Build the photo slot
+  const container = placeholder.parentElement;
   const slot = document.createElement('div');
   slot.className = 'photo-slot';
-  slot.style.width = '100%';
-  slot.style.position = 'relative';
-  slot.style.borderRadius = '12px';
-  slot.style.overflow = 'hidden';
-
   const img = document.createElement('img');
   img.src = src;
-  img.style.cssText = 'width:100%;display:block;object-fit:cover;aspect-ratio:4/3;border-radius:12px;border:2px solid #1f1f1f;transition:transform 0.3s,border-color 0.3s;';
-  img.addEventListener('mouseenter', () => { img.style.transform='scale(1.02)'; img.style.borderColor='#f97316'; });
-  img.addEventListener('mouseleave', () => { img.style.transform=''; img.style.borderColor='#1f1f1f'; });
-
-  // Swap button
+  img.style.cssText = 'width:100%;display:block;object-fit:cover;object-position:center top;aspect-ratio:4/3;border-radius:12px;border:2px solid #1f1f1f;';
   const swapBtn = document.createElement('button');
   swapBtn.textContent = '🔄 Swap Photo';
-  swapBtn.style.cssText = 'position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.75);border:1px solid #444;color:#d1d5db;border-radius:8px;font-size:11px;padding:5px 10px;cursor:pointer;opacity:0;transition:opacity 0.2s,color 0.2s;z-index:3;';
+  swapBtn.style.cssText = 'position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.75);border:1px solid #444;color:#d1d5db;border-radius:8px;font-size:11px;padding:5px 10px;cursor:pointer;opacity:0;transition:opacity 0.2s;z-index:3;';
   slot.addEventListener('mouseenter', () => swapBtn.style.opacity='1');
   slot.addEventListener('mouseleave', () => swapBtn.style.opacity='0');
-  swapBtn.addEventListener('mouseenter', () => { swapBtn.style.color='#f97316'; swapBtn.style.borderColor='#f97316'; });
-  swapBtn.addEventListener('mouseleave', () => { swapBtn.style.color='#d1d5db'; swapBtn.style.borderColor='#444'; });
-
-  // Clicking swap replaces slot with a new placeholder
   swapBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const newPlaceholder = placeholder.cloneNode(false);
-    newPlaceholder.innerHTML = placeholder.innerHTML;
-    // Remove old input and create fresh one
-    const oldInput = newPlaceholder.querySelector('input');
-    if(oldInput) oldInput.remove();
-    wireOneSlot(newPlaceholder);
     container.innerHTML = '';
-    container.appendChild(newPlaceholder);
+    const newPh = placeholder.cloneNode(true);
+    const oldInp = newPh.querySelector('input');
+    if(oldInp) oldInp.remove();
+    wireOneSlot(newPh);
+    container.appendChild(newPh);
   });
-
   slot.appendChild(img);
   slot.appendChild(swapBtn);
-
-  // Replace placeholder in container
   container.innerHTML = '';
   container.appendChild(slot);
-
-  // Show a quick success flash
-  const flash = document.createElement('div');
-  flash.textContent = '✓ Photo added!';
-  flash.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;padding:10px 24px;border-radius:100px;font-size:13px;font-weight:700;z-index:9999;pointer-events:none;animation:fadeFlash 2s ease forwards;';
-  document.body.appendChild(flash);
-  setTimeout(() => flash.remove(), 2000);
 }
 
 function wireOneSlot(placeholder) {
@@ -1448,11 +1665,21 @@ function wireOneSlot(placeholder) {
   placeholder.appendChild(input);
 }
 
-// CSS for flash animation
+// Riverside Hawks logo loaded directly via img src above
+
+// ── INIT ─────────────────────────────────────────────────────────
+buildPlaylist();
+updateUI();
+document.addEventListener('DOMContentLoaded', () => {
+  injectVideoSlots();
+  wirePhotoSlots();
+  setTimeout(preloadVideos, 200);
+});
+setTimeout(() => { injectVideoSlots(); wirePhotoSlots(); setTimeout(preloadVideos, 300); }, 600);
+
 const styleEl = document.createElement('style');
 styleEl.textContent = '@keyframes fadeFlash{0%{opacity:0;transform:translateX(-50%) translateY(10px)}15%{opacity:1;transform:translateX(-50%) translateY(0)}75%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-10px)}}';
 document.head.appendChild(styleEl);
-
 wirePhotoSlots();
 </script>
 </body>
