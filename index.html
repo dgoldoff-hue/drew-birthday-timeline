@@ -101,6 +101,22 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 10px;
+    animation: drewGlow 5s ease-in-out infinite;
+    will-change: filter;
+  }
+  @keyframes drewGlow {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 0px rgba(249,115,22,0));
+    }
+    25% {
+      filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2));
+    }
+    50% {
+      filter: brightness(1.4) drop-shadow(0 0 20px rgba(249,115,22,1)) drop-shadow(0 0 45px rgba(249,115,22,0.6)) drop-shadow(0 0 80px rgba(234,88,12,0.35));
+    }
+    75% {
+      filter: brightness(1.1) drop-shadow(0 0 6px rgba(249,115,22,0.4)) drop-shadow(0 0 14px rgba(249,115,22,0.2));
+    }
   }
   .hero-sub {
     font-family: 'Bebas Neue', sans-serif;
