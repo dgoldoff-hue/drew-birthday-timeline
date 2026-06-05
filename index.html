@@ -493,6 +493,279 @@
   }
 
 
+
+  /* NYC JOURNEY SECTION */
+  .nyc-section {
+    max-width: 920px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+  }
+  .section-heading {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 50px);
+    background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+  /* Journey stops */
+  .journey-list {
+    position: relative;
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .journey-list::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, #f97316, #ea580c 80%, transparent);
+  }
+  .journey-stop {
+    position: relative;
+    padding: 0 0 28px 24px;
+  }
+  .journey-stop::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #f97316;
+    border: 3px solid #0a0a0a;
+    z-index: 2;
+  }
+  .journey-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #f97316;
+    margin-bottom: 4px;
+  }
+  .journey-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .journey-desc {
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+  .journey-tag {
+    display: inline-block;
+    margin-top: 6px;
+    background: rgba(249,115,22,0.1);
+    color: #f97316;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* SCHOOLS SECTION */
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 0;
+  }
+  .school-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .school-card:hover {
+    border-color: #f97316;
+    background: #161616;
+    transform: translateY(-2px);
+  }
+  .school-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: rgba(249,115,22,0.3);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .school-info { flex: 1; }
+  .school-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .school-detail {
+    font-size: 11px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+  .school-years {
+    font-size: 10px;
+    font-weight: 700;
+    color: #f97316;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* KNICKS SECTION */
+  .knicks-section {
+    max-width: 920px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+  }
+  .knicks-banner {
+    background: linear-gradient(135deg, #006BB6 0%, #F58426 100%);
+    border-radius: 20px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .knicks-banner::before {
+    content: '🗽';
+    position: absolute;
+    font-size: 180px;
+    right: -20px;
+    bottom: -30px;
+    opacity: 0.08;
+  }
+  .knicks-banner::after {
+    content: '🏆';
+    position: absolute;
+    font-size: 120px;
+    right: 60px;
+    top: -20px;
+    opacity: 0.1;
+  }
+  .knicks-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .knicks-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .knicks-title span { color: #F58426; }
+  .knicks-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+    max-width: 580px;
+    margin-bottom: 20px;
+  }
+  .knicks-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .knicks-stat {
+    background: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 90px;
+  }
+  .knicks-stat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #F58426;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .knicks-stat-lbl {
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .knicks-series {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .series-game {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+    white-space: nowrap;
+  }
+  .series-game.win {
+    background: rgba(34,197,94,0.2);
+    border-color: rgba(34,197,94,0.4);
+    color: #86efac;
+  }
+  .series-game.tonight {
+    background: rgba(245,132,38,0.3);
+    border-color: #F58426;
+    color: #fff;
+    font-weight: 700;
+    animation: pulse-orange 2s ease-in-out infinite;
+  }
+  @keyframes pulse-orange {
+    0%,100% { box-shadow: 0 0 0 0 rgba(245,132,38,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(245,132,38,0); }
+  }
+  .series-game.tbd {
+    opacity: 0.5;
+  }
+  .knicks-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .knicks-tag:hover { background: rgba(255,255,255,0.25); }
+
+  @media (max-width: 640px) {
+    .knicks-banner { padding: 24px 20px; }
+    .schools-grid { grid-template-columns: 1fr; }
+  }
   /* SOCIAL HIGHLIGHTS SECTION */
   .social-highlights-section {
     max-width: 920px;
@@ -1182,6 +1455,175 @@
 
 <div class="divider"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
 
+
+
+<div class="divider" style="margin-top:40px;"><div class="divider-line"></div><div class="divider-ball">🗽</div><div class="divider-line"></div></div>
+
+<!-- NYC JOURNEY -->
+<div class="nyc-section">
+  <div class="section-heading">A New York Story</div>
+  <div class="section-sub">Born in the city. Raised by it. Always repping it.</div>
+
+  <div class="journey-list">
+
+    <div class="journey-stop">
+      <div class="journey-year">June 5, 2006 · Day One</div>
+      <div class="journey-title">Born at Beth Israel Hospital · Gramercy Park</div>
+      <div class="journey-desc">Drew Edward Goldoff arrived at Beth Israel Medical Center on First Avenue at 16th Street — right in the heart of Gramercy Park, Manhattan. The city was buzzing: the final season of The Sopranos was airing on HBO, summer was arriving in New York, and a future point guard was making his entrance. Beth Israel was the heartbeat hospital of Lower Manhattan for 135 years before closing in 2025. Drew was there at its peak.</div>
+      <span class="journey-tag">📍 Gramercy Park, Manhattan</span>
+    </div>
+
+    <div class="journey-stop">
+      <div class="journey-year">2006–2015 · Lower Manhattan</div>
+      <div class="journey-title">South Street Seaport → Hanover Square</div>
+      <div class="journey-desc">Drew grew up at the family's building at <strong style="color:#f97316">257 Water Street</strong> in the South Street Seaport — one of the most historic blocks in all of New York City, steps from the East River. Later the family moved to <strong style="color:#f97316">10 Hanover Square</strong> in the Financial District, putting Drew right in the middle of the greatest city on earth during his most formative years.</div>
+      <span class="journey-tag">📍 South Street Seaport · Financial District</span>
+    </div>
+
+    <div class="journey-stop">
+      <div class="journey-year">2015 · Brooklyn Bound</div>
+      <div class="journey-title">Brooklyn Heights · Grace Court off Hicks Street</div>
+      <div class="journey-desc">The Goldoffs crossed the bridge to Brooklyn Heights — one of NYC's most storied neighborhoods, with its brownstone-lined streets and sweeping views of the Manhattan skyline. Grace Court off Hicks Street: classic Brooklyn, all the way. Drew brought his basketball everywhere he went.</div>
+      <span class="journey-tag">📍 Brooklyn Heights, Brooklyn</span>
+    </div>
+
+    <div class="journey-stop">
+      <div class="journey-year">2021 · Westchester Bound</div>
+      <div class="journey-title">Scarsdale, New York</div>
+      <div class="journey-desc">The final move: Scarsdale, NY — and the home stretch of Drew's high school basketball career. Scarsdale High School. The Raiders. Number 21. Everything the earlier years of New York hustle had been building toward.</div>
+      <span class="journey-tag">📍 Scarsdale, Westchester County</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" style="margin-top:40px;"><div class="divider-line"></div><div class="divider-ball">📚</div><div class="divider-line"></div></div>
+
+<!-- SCHOOLS -->
+<div class="nyc-section">
+  <div class="section-heading">The Education of Drew Goldoff</div>
+  <div class="section-sub">Seven schools. One constant: always had a ball in his hands.</div>
+  <div class="schools-grid">
+
+    <a class="school-card" href="https://www.yelp.com/biz/montessori-school-of-manhattan-new-york-2" target="_blank" rel="noopener">
+      <div class="school-num">01</div>
+      <div class="school-info">
+        <div class="school-name">Montessori School of Manhattan</div>
+        <div class="school-detail">Lower Manhattan · Early childhood</div>
+        <div class="school-years">Early Years</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="#" target="_blank" rel="noopener">
+      <div class="school-num">02</div>
+      <div class="school-info">
+        <div class="school-name">PS 397 Spruce Street School</div>
+        <div class="school-detail">Designed by Frank Gehry · Opened by Mayor Bloomberg · Lower Manhattan</div>
+        <div class="school-years">Elementary</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="https://www.gatewayschool.org/" target="_blank" rel="noopener">
+      <div class="school-num">03</div>
+      <div class="school-info">
+        <div class="school-name">The Gateway School</div>
+        <div class="school-detail">New York City · Independent day school</div>
+        <div class="school-years">Middle Years</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="https://marymcdowell.org/" target="_blank" rel="noopener">
+      <div class="school-num">04</div>
+      <div class="school-info">
+        <div class="school-name">Mary McDowell Friends School</div>
+        <div class="school-detail">Carroll Gardens, Brooklyn · Quaker-based independent</div>
+        <div class="school-years">Brooklyn Years</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="https://www.edgemont.org/" target="_blank" rel="noopener">
+      <div class="school-num">05</div>
+      <div class="school-info">
+        <div class="school-name">Edgemont School</div>
+        <div class="school-detail">Greenburgh, NY · College prep</div>
+        <div class="school-years">Westchester Transition</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="https://shs.scarsdaleschools.org/" target="_blank" rel="noopener">
+      <div class="school-num">06</div>
+      <div class="school-info">
+        <div class="school-name">Scarsdale High School</div>
+        <div class="school-detail">Scarsdale Raiders · Varsity Basketball #21 · Class of 2025</div>
+        <div class="school-years">2021–2025</div>
+      </div>
+    </a>
+
+    <a class="school-card" href="https://www.hartford.edu/" target="_blank" rel="noopener">
+      <div class="school-num">07</div>
+      <div class="school-info">
+        <div class="school-name">University of Hartford</div>
+        <div class="school-detail">West Hartford, CT · Sports Management &amp; Business</div>
+        <div class="school-years">2025–Present</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider" style="margin-top:40px;"><div class="divider-line"></div><div class="divider-ball">🏀</div><div class="divider-line"></div></div>
+
+
+<!-- KNICKS SECTION -->
+<div class="knicks-section">
+  <div class="knicks-banner">
+    <div class="knicks-eyebrow">🏀 The Goldoff Boys Are True NY Knicks Fans</div>
+    <div class="knicks-title">NEW YORK IS <span>GOING TO THE FINALS</span></div>
+    <div class="knicks-desc">
+      Drew was born on June 5, 2006 — a true New Yorker to his core. The Goldoff family has bled blue &amp; orange their whole lives. And right now, on his 20th birthday, the New York Knicks are in the NBA Finals for the first time since 1999, leading the San Antonio Spurs 1-0. <strong>Game 2 tips off tonight at 8:30 PM ET on ABC.</strong> Best birthday gift the city could give.
+    </div>
+
+    <div class="knicks-stats">
+      <div class="knicks-stat">
+        <div class="knicks-stat-val">1–0</div>
+        <div class="knicks-stat-lbl">Series Lead</div>
+      </div>
+      <div class="knicks-stat">
+        <div class="knicks-stat-val">105–95</div>
+        <div class="knicks-stat-lbl">Game 1 Final</div>
+      </div>
+      <div class="knicks-stat">
+        <div class="knicks-stat-val">+19.4</div>
+        <div class="knicks-stat-lbl">Pts/Game Diff.</div>
+      </div>
+      <div class="knicks-stat">
+        <div class="knicks-stat-val">11–0</div>
+        <div class="knicks-stat-lbl">Playoff Streak</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">2026 NBA Finals Schedule</div>
+      <div class="knicks-series">
+        <div class="series-game win">✅ G1 Jun 3 · NYK 105 SAS 95</div>
+        <div class="series-game tonight">🔴 LIVE G2 Jun 5 · 8:30PM ET · @SAS</div>
+        <div class="series-game tbd">G3 Jun 8 · @MSG</div>
+        <div class="series-game tbd">G4 Jun 10 · @MSG</div>
+        <div class="series-game tbd">G5 Jun 13 · @SAS *</div>
+        <div class="series-game tbd">G6 Jun 16 · @MSG *</div>
+        <div class="series-game tbd">G7 Jun 19 · @SAS *</div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:16px;">
+      Knicks swept Cleveland in the Eastern Conference Finals &amp; entered with the best point differential (+19.4) in NBA playoff history. Led by Jalen Brunson. The 1999 rematch — and this time, New York finishes it.
+    </div>
+
+    <a class="knicks-tag" href="https://www.espn.com/nba/story/_/id/48958143/how-watch-2026-nba-finals-abc-knicks-spurs-schedule" target="_blank" rel="noopener">📺 Watch on ABC Tonight →</a>
+  </div>
+</div>
+
+<div class="divider" style="margin-top:40px;"><div class="divider-line"></div><div class="divider-ball">🗽</div><div class="divider-line"></div></div>
 
 <!-- SOCIAL HIGHLIGHTS -->
 <div class="social-highlights-section">
