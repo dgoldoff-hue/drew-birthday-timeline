@@ -1799,72 +1799,123 @@
 <div id="yt-player" style="position:fixed;left:-9999px;top:-9999px;width:200px;height:200px;pointer-events:none;"></div>
 
 <script>
-// ── HAPPY BIRTHDAY SONG ─────────────────────────────────────────
-function playHappyBirthday() {
+// ── HAPPY BIRTHDAY SONG → AUTO-FADE INTO PLAYLIST ──────────────
+let bdayPlayed = false;
+let bdayDuration = 0; // will be calculated
+
+function playHappyBirthday(onFinished) {
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx) return;
+  if (!AudioCtx) { if (onFinished) onFinished(); return; }
   const ctx = new AudioCtx();
 
-  // Happy Birthday melody: note frequencies and durations
-  // C4=261.63, D4=293.66, E4=329.63, F4=349.23, G4=392.00, A4=440, B4=493.88
-  // C5=523.25, D5=587.33
+  // Happy Birthday melody — each entry: [freq, dur]
   const notes = [
-    // "Hap-py birth-day to you" x2, "Hap-py birth-day dear Drew", "Hap-py birth-day to you"
-    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[523,0.4],[493.88,0.8],  // Happy Birthday to you
-    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[587.33,0.4],[523,0.8],  // Happy Birthday to you
-    [392,0.3],[392,0.1],[784,0.4],[659.25,0.4],[523,0.4],[493.88,0.4],[440,0.8], // Happy Birthday dear Drew
-    [698.46,0.3],[698.46,0.1],[659.25,0.4],[523,0.4],[587.33,0.4],[523,0.9],     // Happy Birthday to you
+    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[523,0.4],[493.88,0.85],
+    [392,0.3],[392,0.1],[440,0.4],[392,0.4],[587.33,0.4],[523,0.85],
+    [392,0.3],[392,0.1],[784,0.4],[659.25,0.4],[523,0.4],[493.88,0.4],[440,0.9],
+    [698.46,0.3],[698.46,0.1],[659.25,0.4],[523,0.4],[587.33,0.4],[523,1.0],
   ];
 
-  let time = ctx.currentTime + 0.1;
+  // Master gain for fade-out at end
+  const masterGain = ctx.createGain();
+  masterGain.connect(ctx.destination);
+  masterGain.gain.setValueAtTime(0.0, ctx.currentTime);
+  masterGain.gain.linearRampToValueAtTime(0.7, ctx.currentTime + 0.3); // fade in
+
+  let time = ctx.currentTime + 0.15;
+  const startTime = time;
+
   notes.forEach(([freq, dur]) => {
-    if (freq === 0) { time += dur; return; }
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(masterGain);
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(freq, time);
     gain.gain.setValueAtTime(0.0, time);
-    gain.gain.linearRampToValueAtTime(0.3, time + 0.02);
-    gain.gain.setValueAtTime(0.3, time + dur - 0.05);
+    gain.gain.linearRampToValueAtTime(0.45, time + 0.02);
+    gain.gain.setValueAtTime(0.45, time + dur - 0.06);
     gain.gain.linearRampToValueAtTime(0.0, time + dur);
     osc.start(time);
-    osc.stop(time + dur);
+    osc.stop(time + dur + 0.05);
     time += dur + 0.02;
   });
+
+  const totalDur = time - startTime + 0.3;
+  bdayDuration = totalDur;
+
+  // Fade out master gain before end
+  masterGain.gain.setValueAtTime(0.7, time - 0.5);
+  masterGain.gain.linearRampToValueAtTime(0.0, time + 0.2);
+
+  // Update player label while playing
+  const label = document.querySelector('.player-label');
+  if (label) label.textContent = '🎂 Happy Birthday Drew!';
+
+  // When song ends, callback to start playlist
+  setTimeout(() => {
+    if (label) label.textContent = '🎤 Birthday Playlist';
+    if (onFinished) onFinished();
+  }, totalDur * 1000);
 }
 
-// Play once on first user interaction (autoplay policy)
-let bdayPlayed = false;
+function startPlaylistAfterBday() {
+  // Wait for YouTube API to be ready, then auto-play track 0
+  function tryPlay() {
+    if (ytReady && ytPlayer) {
+      // Fade in the music player visually
+      playerEl.style.opacity = '0';
+      playerEl.style.transition = 'opacity 1.2s ease';
+      setTimeout(() => { playerEl.style.opacity = '1'; }, 50);
+
+      loadTrack(0, true); // autoplay first track
+      isPlaying = true;
+      document.getElementById('play-btn').textContent = '⏸';
+      document.getElementById('track-art').classList.add('spinning');
+      startProgress();
+    } else {
+      // API not ready yet — retry
+      setTimeout(tryPlay, 300);
+    }
+  }
+  tryPlay();
+}
+
 function triggerBday() {
   if (bdayPlayed) return;
   bdayPlayed = true;
-  playHappyBirthday();
-  document.removeEventListener('click', triggerBday);
-  document.removeEventListener('keydown', triggerBday);
-  document.removeEventListener('touchstart', triggerBday);
+  playHappyBirthday(startPlaylistAfterBday);
 }
-// Try to play immediately (works if page was interacted with already)
-setTimeout(() => {
+
+// Auto-trigger on page load — bypass autoplay policy by resuming AudioContext
+// on the very first user gesture, OR immediately if context starts running
+function tryAutoPlay() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return;
   try {
-    if (!bdayPlayed) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      const testCtx = new AudioCtx();
-      if (testCtx.state === 'running') {
-        testCtx.close();
-        triggerBday();
-      } else {
-        testCtx.close();
-        document.addEventListener('click', triggerBday, {once: true});
-        document.addEventListener('keydown', triggerBday, {once: true});
-        document.addEventListener('touchstart', triggerBday, {once: true});
-      }
+    const probe = new AudioCtx();
+    if (probe.state === 'running') {
+      probe.close();
+      if (!bdayPlayed) triggerBday();
+    } else {
+      probe.close();
+      // Need gesture — fire on first interaction
+      const firstTouch = () => {
+        if (!bdayPlayed) triggerBday();
+        document.removeEventListener('click',      firstTouch);
+        document.removeEventListener('touchstart', firstTouch);
+        document.removeEventListener('keydown',    firstTouch);
+      };
+      document.addEventListener('click',      firstTouch, { once: true });
+      document.addEventListener('touchstart', firstTouch, { once: true });
+      document.addEventListener('keydown',    firstTouch, { once: true });
     }
   } catch(e) {
-    document.addEventListener('click', triggerBday, {once: true});
+    const firstTouch = () => { if (!bdayPlayed) triggerBday(); };
+    document.addEventListener('click', firstTouch, { once: true });
   }
-}, 800);
+}
+setTimeout(tryAutoPlay, 600);
 
 // ── BIRTHDAY BANNER ──────────────────────────────────────────────
 function closeBanner() {
