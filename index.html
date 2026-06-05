@@ -65,7 +65,26 @@
     z-index: 1;
     pointer-events: none;
   }
-  .hero > *:not(.hero-slides):not(.hero-overlay) { position: relative; z-index: 2; }
+  /* Drew Crew logo watermark — white glow on dark bg via invert + screen blend */
+  .hero-logo-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(480px, 70%);
+    height: auto;
+    opacity: 0.5;
+    filter: invert(1) drop-shadow(0 0 12px rgba(249,115,22,0.4));
+    mix-blend-mode: screen;
+    z-index: 2;
+    pointer-events: none;
+    animation: logoBreath 8s ease-in-out infinite;
+  }
+  @keyframes logoBreath {
+    0%, 100% { opacity: 0.4; filter: invert(1) drop-shadow(0 0 8px rgba(249,115,22,0.3)); }
+    50%       { opacity: 0.6; filter: invert(1) drop-shadow(0 0 20px rgba(249,115,22,0.7)); }
+  }
+  .hero > *:not(.hero-slides):not(.hero-overlay):not(.hero-logo-watermark) { position: relative; z-index: 3; }
   .hero::before {
     content: '🏀';
     font-size: 300px;
@@ -668,6 +687,7 @@
     <img src="bg_6.jpg" alt="" loading="lazy">
   </div>
   <div class="hero-overlay"></div>
+  <img class="hero-logo-watermark" src="img_drew_crew.png" alt="Drew Crew" onerror="this.style.display='none'">
   <p class="hero-eyebrow">June 5, 2006 → June 5, 2026</p>
   <h1 class="hero-name">Drew Goldoff</h1>
   <h2 class="hero-sub">20 Years · All Hoops · All Heart</h2>
